@@ -1,4 +1,4 @@
-package nyna.swing.tutorial;
+package nyna.swing.fundamentals;
 
 import javax.swing.*;
 
