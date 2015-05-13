@@ -9,6 +9,7 @@ import java.awt.event.AdjustmentListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JScrollBar;
 
 class ScrollBar implements AdjustmentListener {
@@ -21,6 +22,8 @@ class ScrollBar implements AdjustmentListener {
 	private JLabel extend = new JLabel();
 	private JLabel unit = new JLabel();
 	private JLabel block = new JLabel();
+
+	private JProgressBar prb = new JProgressBar();
 	
 	ScrollBar() {
 		JFrame frm = new JFrame();
@@ -45,6 +48,10 @@ class ScrollBar implements AdjustmentListener {
 		pnlLabels.add(unit);
 		pnlLabels.add(block);
 		
+		// Add progress bar to south region
+		prb.setIndeterminate(true);
+		frm.getContentPane().add(prb, BorderLayout.SOUTH);
+		
 		frm.setVisible(true);
 	}
 	
@@ -67,6 +74,8 @@ class ScrollBar implements AdjustmentListener {
 		extend.setText("Extent value: " + jbar.getVisibleAmount());
 		unit.setText("Unit Increment value: " + jbar.getUnitIncrement());
 		block.setText("Block Increment value: " + jbar.getBlockIncrement());
+		prb.setIndeterminate(false);
+		prb.setValue(jbar.getValue());
 	}
 
 	@Override
